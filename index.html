@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Just a thought.">
+<meta property="og:description" content="Mike, we have been practicing your handwriting. A 92-second film.">
+<meta property="og:type" content="video.other">
+<meta property="og:image" content="https://promptaisolutions.com/just-a-thought/poster.jpg">
+<meta property="og:url" content="https://promptaisolutions.com/just-a-thought/">
+<meta name="twitter:card" content="summary_large_image">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
+<title>Just a thought.</title>
+<meta name="description" content="A 92-second film for Mike about his handwriting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,400&display=swap">
+<style>
+  :root {
+    --ground: #f5f5f7;
+    --ink: #1d1d1f;
+    --quiet: #6e6e73;
+    --hair: #d2d2d7;
+    --frame: #ffffff;
+    --focus: #0071e3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #101012;
+      --ink: #f5f5f7;
+      --quiet: #a1a1a6;
+      --hair: #2c2c2e;
+      --frame: #000000;
+      --focus: #2997ff;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #101012;
+    --ink: #f5f5f7;
+    --quiet: #a1a1a6;
+    --hair: #2c2c2e;
+    --frame: #000000;
+    --focus: #2997ff;
+  }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: clamp(32px, 7vw, 88px) 56px;
+    display: grid;
+    gap: clamp(20px, 3vw, 32px);
+  }
+  .greeting {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-size: clamp(24px, 3.4vw, 38px);
+    line-height: 1.22;
+    text-wrap: balance;
+    margin: 0;
+    max-width: 22ch;
+  }
+  .greeting span {
+    display: block;
+    font-style: italic;
+    color: var(--quiet);
+    font-size: 0.62em;
+    margin-bottom: 8px;
+  }
+  .film {
+    background: var(--frame);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.35);
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    max-width: 100%;
+  }
+  video { display: block; width: 100%; height: 100%; background: var(--frame); }
+  video:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .note {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 24px;
+    font-size: 14px;
+    color: var(--quiet);
+    border-top: 1px solid var(--hair);
+    padding-top: 16px;
+    font-weight: 400;
+  }
+  .note .meta { display: flex; flex-wrap: wrap; gap: 4px 16px; }
+  .mark { font-family: "Playfair Display", Georgia, serif; color: var(--ink); font-size: 16px; }
+</style>
+</head>
+<body>
+
+<main>
+  <p class="greeting"><span>Mike,</span>We have been practicing your handwriting.</p>
+  <div class="film">
+    <video id="film" controls playsinline preload="metadata" poster="poster.jpg" aria-label="Just a thought. A 92-second film.">
+      <source src="just-a-thought.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="note">
+    <span class="meta"><span>92 seconds</span><span>Sound on</span><span>September 2026</span></span>
+    <span class="mark">Prompt AI Solutions</span>
+  </div>
+</main>
+</body>
+</html>
