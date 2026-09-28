@@ -2,77 +2,83 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta property="og:title" content="Just a thought.">
-<meta property="og:description" content="Mike, we have been practicing your handwriting. A 92-second film.">
-<meta property="og:type" content="video.other">
-<meta property="og:image" content="https://promptaisolutions.com/just-a-thought/poster.jpg">
-<meta property="og:url" content="https://promptaisolutions.com/just-a-thought/">
-<meta name="twitter:card" content="summary_large_image">
-<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}</style>
-<title>Just a thought.</title>
-<meta name="description" content="A 92-second film for Mike about his handwriting.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Handwritten at Scale</title>
+<meta name="description" content="Real notes in your own hand, to everyone you mean to write to. A 92-second film from Prompt AI Solutions.">
+<meta property="og:title" content="Handwritten, at scale.">
+<meta property="og:description" content="Real notes in your own hand, to everyone you mean to write to.">
+<meta property="og:image" content="poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap">
 <style>
   :root {
-    --ground: #f5f5f7;
+    --paper: #f6f1e7;
     --ink: #1d1d1f;
-    --quiet: #6e6e73;
-    --hair: #d2d2d7;
-    --frame: #ffffff;
-    --focus: #0071e3;
+    --quiet: #6b6459;
+    --faint: #9a9184;
+    --hair: #e3dac9;
+    --frame: #1d1d1f;
+    --card: #fbf7ee;
+    --focus: #8a6a3a;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       color-scheme: dark;
-      --ground: #101012;
-      --ink: #f5f5f7;
-      --quiet: #a1a1a6;
-      --hair: #2c2c2e;
+      --paper: #1d1d1f;
+      --ink: #f2ece0;
+      --quiet: #b6ac9c;
+      --faint: #857c6e;
+      --hair: #3a362f;
       --frame: #000000;
-      --focus: #2997ff;
+      --card: #262420;
+      --focus: #d8b978;
     }
   }
   :root[data-theme="dark"] {
     color-scheme: dark;
-    --ground: #101012;
-    --ink: #f5f5f7;
-    --quiet: #a1a1a6;
-    --hair: #2c2c2e;
+    --paper: #1d1d1f;
+    --ink: #f2ece0;
+    --quiet: #b6ac9c;
+    --faint: #857c6e;
+    --hair: #3a362f;
     --frame: #000000;
-    --focus: #2997ff;
+    --card: #262420;
+    --focus: #d8b978;
   }
+  html { -webkit-text-size-adjust: 100%; }
+  * { box-sizing: border-box; }
   body {
-    background: var(--ground);
+    margin: 0;
+    background: var(--paper);
     color: var(--ink);
     font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
     font-weight: 300;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  main {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding-inline: 20px;
-    padding-block: clamp(32px, 7vw, 88px) 56px;
-    display: grid;
-    gap: clamp(20px, 3vw, 32px);
+  a { color: inherit; }
+  a:focus-visible, video:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 900px; margin: 0 auto; padding-inline: 16px; }
+  header.top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-block: 22px; font-size: 14px; font-weight: 400; color: var(--quiet);
   }
-  .greeting {
+  .mark { font-family: "Playfair Display", Georgia, serif; color: var(--ink); font-size: 17px; }
+  .hero { padding-block: clamp(20px, 6vw, 56px) clamp(24px, 4vw, 40px); text-align: center; }
+  h1 {
     font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-    font-size: clamp(24px, 3.4vw, 38px);
-    line-height: 1.22;
+    font-weight: 400;
+    font-size: clamp(36px, 7vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
     text-wrap: balance;
-    margin: 0;
-    max-width: 22ch;
   }
-  .greeting span {
-    display: block;
-    font-style: italic;
-    color: var(--quiet);
-    font-size: 0.62em;
-    margin-bottom: 8px;
+  .lede {
+    font-size: clamp(17px, 2vw, 21px); color: var(--quiet);
+    max-width: 34ch; margin: 0 auto; text-wrap: pretty;
   }
   .film {
     background: var(--frame);
@@ -81,39 +87,134 @@
     box-shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.35);
     aspect-ratio: 16 / 9;
     width: 100%;
-    max-width: 100%;
+    margin-top: clamp(28px, 5vw, 48px);
   }
   video { display: block; width: 100%; height: 100%; background: var(--frame); }
-  video:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-  .note {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 8px 24px;
-    font-size: 14px;
-    color: var(--quiet);
-    border-top: 1px solid var(--hair);
-    padding-top: 16px;
-    font-weight: 400;
+  .filmnote {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px;
+    font-size: 13px; font-weight: 400; color: var(--faint); padding-top: 12px;
   }
-  .note .meta { display: flex; flex-wrap: wrap; gap: 4px 16px; }
-  .mark { font-family: "Playfair Display", Georgia, serif; color: var(--ink); font-size: 16px; }
+  section { padding-block: clamp(48px, 8vw, 88px) 0; }
+  h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(26px, 3.6vw, 36px);
+    line-height: 1.15;
+    margin: 0 0 clamp(24px, 4vw, 36px);
+    text-wrap: balance;
+  }
+  .pitch p {
+    font-size: clamp(17px, 2vw, 20px); max-width: 56ch; margin: 0 0 16px;
+    text-wrap: pretty;
+  }
+  .steps {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 1px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    background: var(--hair);
+    border: 1px solid var(--hair);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .steps li { background: var(--card); padding: 24px 22px 28px; }
+  .steps .n { font-size: 13px; font-weight: 500; color: var(--faint); letter-spacing: 0.04em; }
+  .steps h3 { font-weight: 400; font-size: 20px; margin: 8px 0 8px; }
+  .steps p { margin: 0; color: var(--quiet); font-size: 15px; }
+  .stat {
+    display: grid; gap: 12px 40px; align-items: center;
+    grid-template-columns: auto 1fr;
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+    padding-block: clamp(28px, 5vw, 48px);
+  }
+  .stat .big {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(64px, 11vw, 128px);
+    line-height: 0.9;
+  }
+  .stat p { margin: 0; font-size: clamp(17px, 2vw, 20px); max-width: 36ch; }
+  .stat .vs { color: var(--quiet); margin-top: 6px; }
+  .stat cite { display: block; font-style: normal; font-size: 13px; font-weight: 400; color: var(--faint); margin-top: 14px; }
+  .close { padding-block: clamp(56px, 9vw, 104px) clamp(48px, 8vw, 88px); text-align: center; }
+  .close .sig {
+    font-family: "Playfair Display", Georgia, serif; font-style: italic;
+    font-size: clamp(28px, 4.2vw, 44px); margin: 0 0 26px;
+  }
+  .btn {
+    display: inline-block; text-decoration: none;
+    background: var(--ink); color: var(--paper);
+    font-weight: 400; font-size: 16px;
+    padding: 14px 26px; border-radius: 999px;
+  }
+  .btn:hover { opacity: 0.86; }
+  .mail { display: block; margin-top: 14px; font-size: 14px; font-weight: 400; color: var(--quiet); }
+  footer {
+    border-top: 1px solid var(--hair);
+    padding-block: 18px 32px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+    font-size: 13px; font-weight: 400; color: var(--faint);
+  }
+  @media (max-width: 560px) {
+    .stat { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-
-<main>
-  <p class="greeting"><span>Mike,</span>We have been practicing your handwriting.</p>
-  <div class="film">
-    <video id="film" controls playsinline preload="metadata" poster="poster.jpg" aria-label="Just a thought. A 92-second film.">
-      <source src="just-a-thought.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="note">
-    <span class="meta"><span>92 seconds</span><span>Sound on</span><span>September 2026</span></span>
+<div class="wrap">
+  <header class="top">
     <span class="mark">Prompt AI Solutions</span>
+    <span>Handwritten</span>
+  </header>
+
+  <div class="hero">
+    <h1>Handwritten, at scale.</h1>
+    <p class="lede">Real notes in your own hand, to everyone you mean to write to.</p>
+
+    <div class="film">
+      <video id="film" controls playsinline preload="metadata" poster="poster.jpg" aria-label="Handwritten. A 92-second film.">
+        <source src="handwritten.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="filmnote"><span>92 seconds</span><span>Sound on</span></div>
   </div>
-</main>
+
+  <section class="pitch" aria-labelledby="how">
+    <h2 id="how">How it works</h2>
+    <ol class="steps">
+      <li><span class="n">01</span><h3>Your hand</h3><p>We collect the notes you have already written and learn your letters. The pen on the paper is real ink.</p></li>
+      <li><span class="n">02</span><h3>Your voice</h3><p>We listen to your recorded calls and learn how you talk: the phrases you use, the goals you mention, how you sign off.</p></li>
+      <li><span class="n">03</span><h3>Every week</h3><p>We sit down with you for a short check-in on what is working and what is not. That conversation becomes this week's notes.</p></li>
+      <li><span class="n">04</span><h3>Private</h3><p>Everything runs on our own offline system. Your notes and your calls never leave it.</p></li>
+    </ol>
+  </section>
+
+  <section aria-label="Research">
+    <div class="stat">
+      <div class="big">76%</div>
+      <div>
+        <p>returned a survey that came with a handwritten sticky note.</p>
+        <p class="vs">36% returned it without one.</p>
+        <cite>Garner, R. (2005). <a href="https://doi.org/10.1207/s15327663jcp1503_8">Post-It Note Persuasion: A Sticky Influence.</a> Journal of Consumer Psychology, 15(3), 230-237.</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="pitch" aria-labelledby="idea">
+    <h2 id="idea">More contact, on purpose</h2>
+    <p>Most practices hear from their people less as they grow. This one runs the other way.</p>
+    <p>The weekly sit-down keeps you in touch with us, and that keeps you in touch with everyone else. Every week, more people hear from you, in your hand and in your words.</p>
+  </section>
+
+  <div class="close">
+    <p class="sig">Just a thought.</p>
+    <a class="btn" href="mailto:andrew@promptaisolutions.com?subject=Handwritten">Start a conversation</a>
+    <span class="mail">andrew@promptaisolutions.com</span>
+  </div>
+
+  <footer>
+    <span class="mark">Prompt AI Solutions</span>
+    <span>September 2026</span>
+  </footer>
+</div>
 </body>
 </html>
