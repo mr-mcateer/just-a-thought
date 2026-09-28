@@ -1,175 +1,445 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>Handwritten at Scale</title>
+<title>Handwritten at Scale | Prompt AI Solutions</title>
 <meta name="description" content="Real notes in your own hand, to everyone you mean to write to. A 92-second film from Prompt AI Solutions.">
+<meta name="theme-color" content="#0a0a0b">
 <meta property="og:title" content="Handwritten, at scale.">
 <meta property="og:description" content="Real notes in your own hand, to everyone you mean to write to.">
 <meta property="og:image" content="poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;1,400&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
+  /* ===== DESIGN TOKENS (Dark-First) ===== */
   :root {
-    --paper: #f6f1e7;
-    --ink: #1d1d1f;
-    --quiet: #6b6459;
-    --faint: #9a9184;
-    --hair: #e3dac9;
-    --frame: #1d1d1f;
-    --card: #fbf7ee;
-    --focus: #8a6a3a;
+    --white: #0a0a0b;
+    --off-white: #111113;
+    --gray-50: #18181b;
+    --gray-100: #1f1f23;
+    --gray-200: #2a2a30;
+    --gray-400: #55555c;
+    --gray-600: #8b8b92;
+    --gray-800: #f0f0f3;
+    --black: #ffffff;
+    --accent: #7c5cff;
+    --accent-hover: #9b82ff;
+    --accent-blue: #3b82f6;
+    --gradient-accent: linear-gradient(135deg, #7c5cff, #3b82f6);
+    --glow-color: rgba(124, 92, 255, 0.15);
+    --glow-strong: rgba(124, 92, 255, 0.25);
+    --border-subtle: #1f1f23;
+    --border-hover: #2a2a30;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --max-width: 900px;
+    --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --paper: #1d1d1f;
-      --ink: #f2ece0;
-      --quiet: #b6ac9c;
-      --faint: #857c6e;
-      --hair: #3a362f;
-      --frame: #000000;
-      --card: #262420;
-      --focus: #d8b978;
-    }
+
+  /* ===== LIGHT MODE ===== */
+  [data-theme="light"] {
+    --white: #ffffff;
+    --off-white: #f8f8fa;
+    --gray-50: #f0f0f3;
+    --gray-100: #e4e4e7;
+    --gray-200: #d1d1d6;
+    --gray-400: #8b8b92;
+    --gray-600: #55555c;
+    --gray-800: #1d1d1f;
+    --black: #111113;
+    --accent: #6d4aed;
+    --accent-hover: #5a36d6;
+    --accent-blue: #2563eb;
+    --gradient-accent: linear-gradient(135deg, #6d4aed, #2563eb);
+    --glow-color: rgba(109, 74, 237, 0.08);
+    --glow-strong: rgba(109, 74, 237, 0.12);
+    --border-subtle: #e4e4e7;
+    --border-hover: #d1d1d6;
   }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --paper: #1d1d1f;
-    --ink: #f2ece0;
-    --quiet: #b6ac9c;
-    --faint: #857c6e;
-    --hair: #3a362f;
-    --frame: #000000;
-    --card: #262420;
-    --focus: #d8b978;
+
+  [data-theme="light"] .site-nav {
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom-color: transparent;
   }
-  html { -webkit-text-size-adjust: 100%; }
-  * { box-sizing: border-box; }
+
+  [data-theme="light"] .site-nav.nav-scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom-color: var(--gray-100);
+  }
+
+  .icon-moon { display: none; }
+  .icon-sun { display: inline-block; }
+  [data-theme="light"] .icon-sun { display: none; }
+  [data-theme="light"] .icon-moon { display: inline-block; }
+
+  /* ===== RESET ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray-800);
+    background: var(--white);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
-  a { color: inherit; }
-  a:focus-visible, video:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
-  .wrap { max-width: 900px; margin: 0 auto; padding-inline: 16px; }
-  header.top {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding-block: 22px; font-size: 14px; font-weight: 400; color: var(--quiet);
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.1; }
+
+  a { color: var(--accent); text-decoration: none; transition: color 0.2s var(--ease-out); }
+  a:hover { color: var(--accent-hover); }
+  a:focus-visible, video:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+  section { padding: 96px 0; }
+
+  .gradient-text {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .mark { font-family: "Playfair Display", Georgia, serif; color: var(--ink); font-size: 17px; }
-  .hero { padding-block: clamp(20px, 6vw, 56px) clamp(24px, 4vw, 40px); text-align: center; }
-  h1 {
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-    font-weight: 400;
-    font-size: clamp(36px, 7vw, 72px);
-    line-height: 1.08;
+
+  /* ===== NAV ===== */
+  .site-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(10, 10, 11, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .site-nav.nav-scrolled {
+    background: rgba(10, 10, 11, 0.92);
+    border-bottom-color: var(--gray-100);
+  }
+
+  .site-nav__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+
+  .site-nav__logo {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--gray-800);
     letter-spacing: -0.01em;
-    margin: 0 0 16px;
-    text-wrap: balance;
   }
-  .lede {
-    font-size: clamp(17px, 2vw, 21px); color: var(--quiet);
-    max-width: 34ch; margin: 0 auto; text-wrap: pretty;
+
+  .site-nav__logo:hover { color: var(--accent); }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--gray-600);
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
   }
-  .film {
-    background: var(--frame);
-    border-radius: 14px;
+
+  .theme-toggle:hover { color: var(--gray-800); }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 156px 0 64px;
+    text-align: center;
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 18px 50px -24px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, var(--glow-strong) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero .container { position: relative; z-index: 1; }
+
+  .hero__eyebrow {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 980px;
+    background: var(--off-white);
+    border: 1px solid var(--border-subtle);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    color: var(--black);
+    margin-bottom: 20px;
+  }
+
+  .hero__sub {
+    font-size: clamp(17px, 2vw, 20px);
+    color: var(--gray-600);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ===== FILM ===== */
+  .film-wrap { padding-bottom: 40px; position: relative; }
+
+  .film {
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 60px var(--glow-color);
     aspect-ratio: 16 / 9;
     width: 100%;
-    margin-top: clamp(28px, 5vw, 48px);
   }
-  video { display: block; width: 100%; height: 100%; background: var(--frame); }
+
+  video { display: block; width: 100%; height: 100%; background: #000; }
+
   .filmnote {
     display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 16px;
-    font-size: 13px; font-weight: 400; color: var(--faint); padding-top: 12px;
+    font-size: 13px; font-weight: 500; color: var(--gray-400); padding-top: 14px;
   }
-  section { padding-block: clamp(48px, 8vw, 88px) 0; }
-  h2 {
-    font-family: "Playfair Display", Georgia, serif;
-    font-weight: 400;
-    font-size: clamp(26px, 3.6vw, 36px);
-    line-height: 1.15;
-    margin: 0 0 clamp(24px, 4vw, 36px);
-    text-wrap: balance;
+
+  /* ===== SECTION HEADERS ===== */
+  .section-eyebrow {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
   }
-  .pitch p {
-    font-size: clamp(17px, 2vw, 20px); max-width: 56ch; margin: 0 0 16px;
-    text-wrap: pretty;
+
+  .section-title {
+    font-size: clamp(30px, 4.4vw, 44px);
+    letter-spacing: -0.03em;
+    color: var(--black);
+    margin-bottom: 16px;
   }
-  .steps {
-    list-style: none; margin: 0; padding: 0;
-    display: grid; gap: 1px;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    background: var(--hair);
-    border: 1px solid var(--hair);
-    border-radius: 14px;
-    overflow: hidden;
+
+  .section-sub {
+    font-size: 17px;
+    color: var(--gray-600);
+    max-width: 560px;
+    line-height: 1.65;
   }
-  .steps li { background: var(--card); padding: 24px 22px 28px; }
-  .steps .n { font-size: 13px; font-weight: 500; color: var(--faint); letter-spacing: 0.04em; }
-  .steps h3 { font-weight: 400; font-size: 20px; margin: 8px 0 8px; }
-  .steps p { margin: 0; color: var(--quiet); font-size: 15px; }
-  .stat {
-    display: grid; gap: 12px 40px; align-items: center;
+
+  /* ===== STEPS ===== */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .step-card {
+    background: var(--off-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 28px;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s;
+  }
+
+  .step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--border-hover);
+  }
+
+  .step-card__number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 14px;
+    transition: opacity 0.3s ease;
+  }
+
+  .step-card:hover .step-card__number { opacity: 1; }
+
+  .step-card h3 {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+
+  .step-card p { font-size: 15px; color: var(--gray-600); line-height: 1.6; }
+
+  /* ===== STAT ===== */
+  .stat-card {
+    display: grid;
+    gap: 12px 40px;
+    align-items: center;
     grid-template-columns: auto 1fr;
-    border-top: 1px solid var(--hair);
-    border-bottom: 1px solid var(--hair);
-    padding-block: clamp(28px, 5vw, 48px);
+    background: var(--off-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: clamp(28px, 5vw, 44px);
   }
-  .stat .big {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(64px, 11vw, 128px);
+
+  .stat-card .big {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 9vw, 96px);
+    font-weight: 700;
     line-height: 0.9;
   }
-  .stat p { margin: 0; font-size: clamp(17px, 2vw, 20px); max-width: 36ch; }
-  .stat .vs { color: var(--quiet); margin-top: 6px; }
-  .stat cite { display: block; font-style: normal; font-size: 13px; font-weight: 400; color: var(--faint); margin-top: 14px; }
-  .close { padding-block: clamp(56px, 9vw, 104px) clamp(48px, 8vw, 88px); text-align: center; }
-  .close .sig {
-    font-family: "Playfair Display", Georgia, serif; font-style: italic;
-    font-size: clamp(28px, 4.2vw, 44px); margin: 0 0 26px;
+
+  .stat-card p { margin: 0; font-size: clamp(16px, 2vw, 19px); color: var(--gray-800); max-width: 36ch; }
+  .stat-card .vs { color: var(--gray-600); margin-top: 6px; font-size: 15px; }
+  .stat-card cite { display: block; font-style: normal; font-size: 13px; font-weight: 500; color: var(--gray-400); margin-top: 14px; }
+  .stat-card cite a { color: var(--gray-400); text-decoration: underline; }
+  .stat-card cite a:hover { color: var(--accent); }
+
+  /* ===== PITCH ===== */
+  .pitch p {
+    font-size: clamp(16px, 1.8vw, 18px);
+    color: var(--gray-600);
+    max-width: 60ch;
+    margin: 0 0 16px;
+    line-height: 1.75;
   }
+
+  /* ===== CONTACT ===== */
+  .contact {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, var(--glow-strong) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .contact .container { position: relative; z-index: 1; }
+
+  .contact .section-sub { margin-left: auto; margin-right: auto; margin-bottom: 32px; }
+
   .btn {
-    display: inline-block; text-decoration: none;
-    background: var(--ink); color: var(--paper);
-    font-weight: 400; font-size: 16px;
-    padding: 14px 26px; border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 980px;
+    transition: all 0.25s var(--ease-out);
+    cursor: pointer;
+    border: none;
+    background: var(--gradient-accent);
+    color: #fff;
   }
-  .btn:hover { opacity: 0.86; }
-  .mail { display: block; margin-top: 14px; font-size: 14px; font-weight: 400; color: var(--quiet); }
-  footer {
-    border-top: 1px solid var(--hair);
-    padding-block: 18px 32px;
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
-    font-size: 13px; font-weight: 400; color: var(--faint);
+
+  .btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 30px var(--glow-color);
+    color: #fff;
   }
-  @media (max-width: 560px) {
-    .stat { grid-template-columns: 1fr; }
+
+  .mail { display: block; margin-top: 16px; font-size: 14px; color: var(--gray-600); }
+
+  /* ===== FOOTER ===== */
+  .site-footer { padding: 32px 0; border-top: 1px solid var(--gray-100); }
+
+  .site-footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .site-footer p { font-size: 13px; color: var(--gray-400); }
+  .site-footer a { color: var(--gray-600); font-size: 13px; font-weight: 500; }
+
+  @media (max-width: 640px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .stat-card { grid-template-columns: 1fr; }
+    section { padding: 72px 0; }
+    .hero { padding: 128px 0 48px; }
+    .site-footer__inner { flex-direction: column; text-align: center; }
   }
 </style>
 </head>
+
 <body>
-<div class="wrap">
-  <header class="top">
-    <span class="mark">Prompt AI Solutions</span>
-    <span>Handwritten</span>
-  </header>
 
-  <div class="hero">
-    <h1>Handwritten, at scale.</h1>
-    <p class="lede">Real notes in your own hand, to everyone you mean to write to.</p>
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav__inner">
+      <a href="https://promptaisolutions.com/" class="site-nav__logo">Prompt AI Solutions</a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
+        <span class="theme-toggle__icon">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </span>
+      </button>
+    </div>
+  </nav>
 
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero__eyebrow">Prompt AI Solutions</p>
+      <h1>Handwritten,<br><span class="gradient-text">at scale.</span></h1>
+      <p class="hero__sub">Real notes in your own hand, to everyone you mean to write to.</p>
+    </div>
+  </section>
+
+  <!-- Film -->
+  <div class="container film-wrap">
     <div class="film">
       <video id="film" controls playsinline preload="metadata" poster="poster.jpg" aria-label="Handwritten. A 92-second film.">
         <source src="handwritten.mp4" type="video/mp4">
@@ -178,43 +448,101 @@
     <div class="filmnote"><span>92 seconds</span><span>Sound on</span></div>
   </div>
 
-  <section class="pitch" aria-labelledby="how">
-    <h2 id="how">How it works</h2>
-    <ol class="steps">
-      <li><span class="n">01</span><h3>Your hand</h3><p>We collect the notes you have already written and learn your letters. The pen on the paper is real ink.</p></li>
-      <li><span class="n">02</span><h3>Your voice</h3><p>We listen to your recorded calls and learn how you talk: the phrases you use, the goals you mention, how you sign off.</p></li>
-      <li><span class="n">03</span><h3>Every week</h3><p>We sit down with you for a short check-in on what is working and what is not. That conversation becomes this week's notes.</p></li>
-      <li><span class="n">04</span><h3>Private</h3><p>Everything runs on our own offline system. Your notes and your calls never leave it.</p></li>
-    </ol>
-  </section>
-
-  <section aria-label="Research">
-    <div class="stat">
-      <div class="big">76%</div>
-      <div>
-        <p>returned a survey that came with a handwritten sticky note.</p>
-        <p class="vs">36% returned it without one.</p>
-        <cite>Garner, R. (2005). <a href="https://doi.org/10.1207/s15327663jcp1503_8">Post-It Note Persuasion: A Sticky Influence.</a> Journal of Consumer Psychology, 15(3), 230-237.</cite>
+  <!-- How it works -->
+  <section id="how">
+    <div class="container">
+      <p class="section-eyebrow">How it works</p>
+      <h2 class="section-title">Four steps, every week.</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-card__number">01</span>
+          <h3>Your hand</h3>
+          <p>We collect the notes you have already written and learn your letters. The pen on the paper is real ink.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__number">02</span>
+          <h3>Your voice</h3>
+          <p>We listen to your recorded calls and learn how you talk: the phrases you use, the goals you mention, how you sign off.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__number">03</span>
+          <h3>Every week</h3>
+          <p>We sit down with you for a short check-in on what is working and what is not. That conversation becomes this week's notes.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__number">04</span>
+          <h3>Private</h3>
+          <p>Everything runs on our own offline system. Your notes and your calls never leave it.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="pitch" aria-labelledby="idea">
-    <h2 id="idea">More contact, on purpose</h2>
-    <p>Most practices hear from their people less as they grow. This one runs the other way.</p>
-    <p>The weekly sit-down keeps you in touch with us, and that keeps you in touch with everyone else. Every week, more people hear from you, in your hand and in your words.</p>
+  <!-- Research stat -->
+  <section aria-label="Research" style="padding-top: 0;">
+    <div class="container">
+      <div class="stat-card">
+        <div class="big gradient-text">76%</div>
+        <div>
+          <p>returned a survey that came with a handwritten sticky note.</p>
+          <p class="vs">36% returned it without one.</p>
+          <cite>Garner, R. (2005). <a href="https://doi.org/10.1207/s15327663jcp1503_8">Post-It Note Persuasion: A Sticky Influence.</a> Journal of Consumer Psychology, 15(3), 230-237.</cite>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <div class="close">
-    <p class="sig">Just a thought.</p>
-    <a class="btn" href="mailto:andrew@promptaisolutions.com?subject=Handwritten">Start a conversation</a>
-    <span class="mail">andrew@promptaisolutions.com</span>
-  </div>
+  <!-- Idea -->
+  <section class="pitch" aria-labelledby="idea" style="padding-top: 0;">
+    <div class="container">
+      <p class="section-eyebrow">Why it works</p>
+      <h2 class="section-title" id="idea">More contact, on purpose.</h2>
+      <p>Most practices hear from their people less as they grow. This one runs the other way.</p>
+      <p>The weekly sit-down keeps you in touch with us, and that keeps you in touch with everyone else. Every week, more people hear from you, in your hand and in your words.</p>
+    </div>
+  </section>
 
-  <footer>
-    <span class="mark">Prompt AI Solutions</span>
-    <span>September 2026</span>
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <p class="section-eyebrow">Just a thought</p>
+      <h2 class="section-title">Start a conversation.</h2>
+      <a href="mailto:andrew@promptaisolutions.com?subject=Handwritten" class="btn">Start a conversation</a>
+      <span class="mail">andrew@promptaisolutions.com</span>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__inner">
+        <a href="https://promptaisolutions.com/" class="site-nav__logo">Prompt AI Solutions</a>
+        <p>&copy; 2026 Prompt AI Solutions. Corvallis, Oregon.</p>
+      </div>
+    </div>
   </footer>
-</div>
+
+  <script>
+    /* ===== THEME TOGGLE ===== */
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+    (function () {
+      var saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    })();
+
+    /* ===== NAV SCROLL ===== */
+    var nav = document.querySelector('.site-nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('nav-scrolled', window.scrollY > 10);
+    });
+  </script>
+
 </body>
+
 </html>
